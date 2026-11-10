@@ -11,7 +11,9 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "tauri": "tauri",
-    "check:design": "node scripts/check-design-tokens.mjs"
+    "check:design": "node scripts/check-design-tokens.mjs",
+    "check:rust": "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check && cargo clippy --locked --manifest-path src-tauri/Cargo.toml --all-targets -- -D warnings && cargo test --locked --manifest-path src-tauri/Cargo.toml --lib",
+    "check:all": "bun run check && bun run check:design && bunx prettier --check src svelte.config.js && bun run check:rust && bun run build"
   },
   "license": "MIT",
   "dependencies": {

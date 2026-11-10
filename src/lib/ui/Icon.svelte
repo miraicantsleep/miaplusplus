@@ -3,6 +3,7 @@
 </script>
 
 <svg
+  class:spinning={name === "spinner"}
   width="1.125em"
   height="1.125em"
   viewBox="0 0 24 24"
@@ -22,3 +23,21 @@
       d="M12 4a8 8 0 0 1 8 8"
     />{/if}
 </svg>
+
+<style>
+  .spinning {
+    animation: icon-spin 1s linear infinite;
+    transform-origin: center;
+  }
+  @keyframes icon-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .spinning {
+      /* Preserve loading feedback under reduced motion. */
+      animation: icon-spin 1.5s linear infinite !important;
+    }
+  }
+</style>
