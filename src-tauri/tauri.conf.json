@@ -13,6 +13,7 @@
     "windows": [
       {
         "title": "miaplusplus",
+        "url": "/login",
         "width": 800,
         "height": 600
       }
